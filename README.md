@@ -36,7 +36,8 @@ O projeto é um estudo sobre os testes utilizando Jest e a biblioteca React Test
 
 2. Navegue até o diretório do projeto:
     ```bash
-    cd pokedex-project
+    cd revisao-trybe-react-testing-library-project
+
 
 3. Instale as dependências:
     ```
