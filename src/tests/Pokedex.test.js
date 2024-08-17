@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from '../utils/renderWithRouter';
 
@@ -23,16 +24,18 @@ describe('Teste se é exibido o próximo Pokémon da lista quando o botão "Pró
     renderWithRouter(<App />);
 
     const fireBtn = screen.getByRole('button', { name: /Fire/i });
+    const allBtin = screen.getByRole('button', { name: /All/i });
 
+    const pokemonInScreen = screen.getByText(/Pikachu/i);
     const totalBtns = screen.getAllByRole('button');
     const btnsTestid = screen.getAllByTestId('pokemon-type-button');
 
+    userEvent.click(allBtin);
+
     expect(fireBtn).toBeInTheDocument();
+    expect(allBtin).toBeInTheDocument();
     expect(totalBtns).toHaveLength(9);
     expect(btnsTestid).toHaveLength(7);
-  });
-
-  test('testando "PokemonButtonPAnel"', () => {
-    renderWithRouter(<App />);
+    expect(pokemonInScreen).toBeInTheDocument();
   });
 });
